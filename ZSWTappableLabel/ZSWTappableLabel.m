@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, ZSWTappableLabelNotifyType) {
     }
     
     NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:self.unmodifiedAttributedText];
-    NSTextContainer *textContainer = [[NSTextContainer alloc] initWithSize:self.bounds.size];
+    NSTextContainer *textContainer = [[NSTextContainer alloc] initWithSize:CGSizeMake(self.bounds.size.width, CGFLOAT_MAX)];
     NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
 
     textContainer.lineBreakMode = self.lineBreakMode;
