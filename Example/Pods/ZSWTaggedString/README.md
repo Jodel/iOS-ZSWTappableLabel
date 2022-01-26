@@ -1,9 +1,9 @@
 # ZSWTaggedString
 
 [![CI Status](https://img.shields.io/circleci/project/zacwest/ZSWTaggedString.svg?style=flat)](https://circleci.com/gh/zacwest/ZSWTaggedString)
-[![Version](https://img.shields.io/cocoapods/v/ZSWTaggedString.svg?style=flat)](http://cocoadocs.org/docsets/ZSWTaggedString)
-[![License](https://img.shields.io/cocoapods/l/ZSWTaggedString.svg?style=flat)](http://cocoadocs.org/docsets/ZSWTaggedString)
-[![Platform](https://img.shields.io/cocoapods/p/ZSWTaggedString.svg?style=flat)](http://cocoadocs.org/docsets/ZSWTaggedString)
+[![Version](https://img.shields.io/cocoapods/v/ZSWTaggedString.svg?style=flat)](http://cocoapods.org/pods/ZSWTaggedString)
+[![License](https://img.shields.io/cocoapods/l/ZSWTaggedString.svg?style=flat)](http://cocoapods.org/pods/ZSWTaggedString)
+[![Platform](https://img.shields.io/cocoapods/p/ZSWTaggedString.svg?style=flat)](http://cocoapods.org/pods/ZSWTaggedString)
 
 ZSWTaggedString converts a `String`/`NSString` marked-up with tags into an  `NSAttributedString`. Tags are similar to HTML except you define what each tag represents.
 
@@ -16,11 +16,12 @@ let localizedString = NSLocalizedString("bowties are <b>cool</b>", comment: "");
 let taggedString = ZSWTaggedString(string: localizedString)
 
 let options = ZSWTaggedStringOptions()
-options["b"] = .Static([
-    NSFontAttributeName: UIFont.boldSystemFontOfSize(18.0)
+
+options["b"] = .static([
+    .font: UIFont.boldSystemFont(ofSize: 18.0)
 ])
 
-let attributedString = try! taggedString.attributedStringWithOptions(options)
+let attributedString = try! taggedString.attributedString(with: options)
 print(attributedString)
 ```
 
@@ -53,7 +54,7 @@ You can apply style based on metadata included in the string. Let's italicize a 
 let story1 = Story(type: .One, name: "on<e")
 let story2 = Story(type: .Two, name: "tw<o")
 
-func storyWrap(story: Story) -> String {
+func storyWrap(_ story: Story) -> String {
     // You should separate data-level tags from the localized strings
     // so you can iterate on their definition without the .strings changing
     // Ideally you'd place this on the Story class itself.
@@ -68,18 +69,18 @@ let options = ZSWTaggedStringOptions()
 
 // Base attributes apply to the whole string, before any tag attributes.
 options.baseAttributes = [
-    NSFontAttributeName: UIFont.systemFontOfSize(14.0),
-    NSForegroundColorAttributeName: UIColor.grayColor()
+    .font: UIFont.systemFont(ofSize: 14.0),
+    .foregroundColor: UIColor.gray
 ]
 
 // Normal attributes just add their attributes to the attributed string.
-options["i"] = .Static([
-    NSFontAttributeName: UIFont.italicSystemFontOfSize(14.0)
+options["i"] = .static([
+    .font: UIFont.italicSystemFont(ofSize: 14.0)
 ])
 
 // Dynamic attributes give you an opportunity to decide what to do for each tag
-options["story"] = .Dynamic({ tagName, tagAttributes, existingAttributes in
-    var attributes = [String: AnyObject]()
+options["story"] = .dynamic({ tagName, tagAttributes, existingAttributes in
+    var attributes = [NSAttributedString.Key: AnyObject]()
     
     guard let typeString = tagAttributes["type"] as? String,
         let type = Story.StoryType(rawValue: typeString) else {
@@ -88,9 +89,9 @@ options["story"] = .Dynamic({ tagName, tagAttributes, existingAttributes in
     
     switch type {
     case .One:
-        attributes[NSForegroundColorAttributeName] = UIColor.redColor()
+        attributes[.foregroundColor] = UIColor.red
     case .Two:
-        attributes[NSForegroundColorAttributeName] = UIColor.orangeColor()
+        attributes[.foregroundColor] = UIColor.orange
     }
     
     return attributes
@@ -160,25 +161,25 @@ You can use the `existingStringAttributes` to handle well-established keys. For 
 let options = ZSWTaggedStringOptions()
 
 options.baseAttributes = [
-    NSFontAttributeName: UIFont.systemFontOfSize(12.0)
+    .font: UIFont.systemFont(ofSize: 12.0)
 ]
 
-options.unknownTagAttributes = .Dynamic({ tagName, tagAttributes, existingAttributes in
-    var attributes = [String: AnyObject]()
+options.unknownTagAttributes = .dynamic({ tagName, tagAttributes, existingAttributes in
+    var attributes = [NSAttributedString.Key: Any]()
     
-    if let font = existingAttributes[NSFontAttributeName] as? UIFont {
+    if let font = existingAttributes[.font] as? UIFont {
         switch tagName {
         case "b":
-            attributes[NSFontAttributeName] = UIFont.boldSystemFontOfSize(font.pointSize)
+            attributes[.font] = UIFont.boldSystemFont(ofSize: font.pointSize)
         case "i":
-            attributes[NSFontAttributeName] = UIFont.italicSystemFontOfSize(font.pointSize)
+            attributes[.font] = UIFont.italicSystemFont(ofSize: font.pointSize)
         default:
             break
         }
     }
     
     if tagName == "u" {
-        attributes[NSUnderlineStyleAttributeName] = NSUnderlineStyle.StyleSingle.rawValue
+        attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
     }
     
     return attributes
@@ -234,8 +235,8 @@ If any of your composed strings contain a `<` character without being in a tag, 
 ZSWTaggedString is available through [CocoaPods](http://cocoapods.org). Add the following line to your Podfile:
 
 ```ruby
-pod "ZSWTaggedString", "~> 2.0"
-pod "ZSWTaggedString/Swift", "~> 2.0" # Optional, for Swift support
+pod "ZSWTaggedString", "~> 4.2"
+pod "ZSWTaggedString/Swift", "~> 4.2" # Optional, for Swift support
 ```
 
 ## License
