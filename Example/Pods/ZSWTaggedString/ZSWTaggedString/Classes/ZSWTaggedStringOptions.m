@@ -108,7 +108,7 @@ static ZSWTaggedStringOptions *ZSWStringParserDefaultOptions;
     self._private_tagToAttributesMap = mutableMap;
 }
 
-- (void)setAttributes:(NSDictionary<NSString *,id> *)dict forTagName:(NSString *)tagName {
+- (void)setAttributes:(NSDictionary<NSAttributedStringKey,id> *)dict forTagName:(NSString *)tagName {
     NSParameterAssert(tagName.length > 0);
     
     ZSWTaggedStringAttribute *attribute = [[ZSWTaggedStringAttribute alloc] init];
@@ -139,13 +139,21 @@ static ZSWTaggedStringOptions *ZSWStringParserDefaultOptions;
                updatedWithTags:(NSArray *)tags {
     NSParameterAssert([string isKindOfClass:[NSMutableAttributedString class]]);
     
+    if (string.length == 0) {
+        // For example, a string like '<blah></blah>' has no content, so we can 't
+        // adjust what's inside based on tags. All we can do is base attributes.
+        // For dynamic attributes below, we may end up calling out of bounds trying
+        // to get existing attributes at index 0, which doesn't exist.
+        return;
+    }
+    
     [string setAttributes:self.baseAttributes range:NSMakeRange(0, string.length)];
     
     ZSWTaggedStringAttribute *unknownTagWrapper = self._private_unknownTagWrapper;
     
     for (ZSWStringParserTag *tag in tags) {
         ZSWTaggedStringAttribute *tagValue = self._private_tagToAttributesMap[tag.tagName.lowercaseString];
-        NSDictionary<NSString *, id> *attributes = nil;
+        NSDictionary<NSAttributedStringKey, id> *attributes = nil;
         
         if (tagValue) {
             attributes = [tagValue attributesForTag:tag forString:string];
