@@ -1,0 +1,131 @@
+repo_name: Jodel/iOS-ZSWTappableLabel
+report_id: 5868fdec0fa18e6daab0d6805aa21529
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-29T10:49:00+00:00'
+requested_by: gridNA
+provider: github
+branch: master
+detected_tools_count: 10
+tools:
+- name: Objective-C
+  description: The primary programming language you use when writing software for
+    OS X and iOS
+  website_url: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1008/xcode.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel
+  detection_source: Repo Metadata
+- name: Ruby
+  description: A dynamic, interpreted, open source programming language with a focus
+    on simplicity and productivity
+  website_url: https://www.ruby-lang.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/989/ruby.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel
+  detection_source: Repo Metadata
+- name: Swift
+  description: 'An innovative new programming language for Cocoa and Cocoa Touch. '
+  website_url: https://developer.apple.com/swift/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1009/tuHsaI2U.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel
+  detection_source: Repo Metadata
+- name: CocoaPods
+  description: A dependency manager for Swift and Objective-C Cocoa projects
+  website_url: https://cocoapods.org/
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: CocoaPods Packages
+  image_url: https://img.stackshare.io/service/2426/e1cbdef9d4b11484049a033886578e54_400x400.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel/blob/master/Example/Podfile.lock
+  detection_source: Example/Podfile.lock
+  last_updated_by: Zachary West
+  last_updated_on: 2015-05-31 18:52:10.000000000 Z
+- name: SnapKit
+  description: SnapKit is a DSL to make Auto Layout easy on both iOS and OS X.
+  website_url: http://snapkit.io
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/9384/no-img-open-source.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel/blob/master/Example/Podfile
+  detection_source: Example/Podfile
+  last_updated_by: Zachary West
+  last_updated_on: 2017-05-12 21:02:40.000000000 Z
+- name: Expecta
+  description: A matcher framework for Objective-C &amp; Cocoa
+  package_url: https://cocoapods.org/pods/Expecta
+  version: 1.0.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: CocoaPods Packages
+  image_url: https://img.stackshare.io/package/cocoapods/image.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel/blob/master/Example/Podfile.lock
+  detection_source: Example/Podfile
+  last_updated_by: Zachary West
+  last_updated_on: 2017-05-12 21:02:40.000000000 Z
+- name: Masonry
+  description: Harness the power of Auto Layout NSLayoutConstraints with a simplified
+  package_url: https://cocoapods.org/pods/Masonry
+  version: 1.1.0
+  license: ''
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: CocoaPods Packages
+  image_url: https://img.stackshare.io/package/cocoapods/image.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel/blob/master/Example/Podfile.lock
+  detection_source: Example/Podfile
+  last_updated_by: Zachary West
+  last_updated_on: 2017-05-12 21:02:40.000000000 Z
+- name: SnapKit
+  description: Harness the power of auto layout with a simplified
+  package_url: https://cocoapods.org/pods/SnapKit
+  version: 5.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: CocoaPods Packages
+  image_url: https://img.stackshare.io/package/cocoapods/image.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel/blob/master/Example/Podfile.lock
+  detection_source: Example/Podfile
+  last_updated_by: Zachary West
+  last_updated_on: 2017-05-12 21:02:40.000000000 Z
+- name: Specta
+  description: A light-weight TDD / BDD framework
+  package_url: https://cocoapods.org/pods/Specta
+  version: 1.0.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: CocoaPods Packages
+  image_url: https://img.stackshare.io/package/cocoapods/image.png
+  detection_source_url: https://github.com/Jodel/iOS-ZSWTappableLabel/blob/master/Example/Podfile.lock
+  detection_source: Example/Podfile
+  last_updated_by: Zachary West
+  last_updated_on: 2017-05-12 21:02:40.000000000 Z
